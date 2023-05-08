@@ -13,7 +13,14 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	<!-- 세션 시간설정 (분단위) -->
+	<web-app xmlns = "http://java.sun.com/xml/ns/javaee" version = "3.0">
 
+      <session-config>
+             <session-timeout>15</session-timeout>
+      </session-config>
+      
+	</web-app>
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
