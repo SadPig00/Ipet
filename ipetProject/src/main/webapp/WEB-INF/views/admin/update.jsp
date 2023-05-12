@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="../resources/assets/css/main.css" />
     <link rel="stylesheet" href="../resources/assets/css/community.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.jpg">
     <title>회원 가입</title>
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <style>

@@ -33,7 +33,7 @@
 					<li>
 						<a href="#">고객관리</a>
 						<ul>
-							<li><a href="#">고객센터 관리</a></li>
+							<li><a href="/admin/notice">공지사항 관리</a></li>
 							<li><a href="#">QnA 관리</a></li>
 							<li><a href="#">이벤트 관리</a></li>
 						</ul>

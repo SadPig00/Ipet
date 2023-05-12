@@ -6,11 +6,11 @@
 
       <head>
         <title>글 목록</title>
-        <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.jpg">
-        <link rel="stylesheet" href="../resources/assets/css/main.css" />
-        <link rel="stylesheet" href="../resources/assets/css/community.css" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="../resources/assets/css/main.css" />
+        <link rel="stylesheet" href="../resources/assets/css/community.css" />
+        <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.jpg">
         <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
         <script>
           $(document).ready(function () {

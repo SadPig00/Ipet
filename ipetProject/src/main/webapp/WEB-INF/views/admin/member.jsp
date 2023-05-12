@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <!DOCTYPE HTML>
     <html>
 
@@ -9,6 +10,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
       <link rel="stylesheet" href="../resources/assets/css/main.css" />
       <link rel="stylesheet" href="../resources/assets/css/community.css" />
+      <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.jpg">
       <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
       <script>
         $(document).ready(function () {
@@ -65,7 +67,7 @@
                             <td>${list.address}</td>
                             <td>${list.email}</td>
                             <td>${list.id}</td>
-                            <td>${list.createDate}</td>
+                            <td><fmt:formatDate pattern="yyyy년 M월 d일 hh시 m분" value="${list.createDate}"/></td>
                             <td><a href="/admin/update?mno=${list.mno}"><input type="button" value="고객정보 수정" /></a>
                           </tr>
                         </c:forEach>

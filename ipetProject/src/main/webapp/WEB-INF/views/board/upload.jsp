@@ -5,6 +5,7 @@
   <head>
     <meta charset="UTF-8">
     <title>이미지 업로드</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.jpg">
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <script>
       $(document).ready(function () {

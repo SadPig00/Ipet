@@ -73,6 +73,10 @@ public class AdminController {
 		if(result==1)map.put("message", "고객 번호: "+mno+"번 삭제 완료");
 		else map.put("message", "삭제 실패");
 		return new ResponseEntity(map,HttpStatus.OK);
-			
+	}
+	
+	@GetMapping("notice")
+	public void notice() {
+		
 	}
 }

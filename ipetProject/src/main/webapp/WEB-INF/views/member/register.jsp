@@ -7,18 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="../resources/assets/css/main.css" />
     <link rel="stylesheet" href="../resources/assets/css/community.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.jpg">
     <title>회원 가입</title>
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    
     <script>
-      function chkCharCode(event) {
-        const regExp = /[^0-9a-zA-Z]/g;
-        const ele = event.target;
-        $("#krCheck").text("");
-        if (regExp.test(ele.value)) {
-          ele.value = ele.value.replace(regExp, '');
-          $("#krCheck").text("한글 및 특수문자는 입력할수 없습니다").css("color", "red");
-        }
-      };
+     
       $(document).ready(function () {
 
         // 아이디 중복 확인
@@ -165,12 +159,13 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   </head>
   <style>
-      input:read-only,
-      textarea:read-only {	
-        box-shadow: none;
-        background-color: rgba(134, 130, 130, 0.349);
-      }
-    </style>
+    input:read-only,
+    textarea:read-only {
+      box-shadow: none;
+      background-color: rgba(134, 130, 130, 0.349);
+    }
+  </style>
+
   <body class="is_preload">
     <div class="page_wrapper">
       <%@ include file="../header.jsp" %>
@@ -178,7 +173,7 @@
           <section class="container">
             <div id="content">
               <form action="#" method="post">
-                아이디: <input type="text" name="id" id="id" onkeyup="chkCharCode(event)">
+                아이디: <input type="text" name="id" id="id" oninput="this.value = this.value.replace(/[ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');">
                 <span id="krCheck"></span>
                 <br />
                 <a id="idCheck">중복 확인</a>
@@ -190,13 +185,14 @@
                 <input type="hidden" id="pwdResult" readonly>
                 <span id="checkPwd"></span><br />
                 이름: <input type="text" name="name" id="name">
-                전화번호: <input type="text" name="phone" id="phone"><br />
+                전화번호: <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
+                name="phone" id="phone" placeholder="- 빼고 입력해 주세요"/>
                 주소 : <a id="kakaoaddr">주소찾기</a>
                 <input type="text" name="address" id="address" readonly>
                 상세주소 : <input type="text" name="address2">
                 이메일: <input type="email" name="email" id="email">
                 <div id="authEmail">
-                  <a id="emailCheck">이메일 인증</a>
+                  <a id="emailCheck" onclick="alert('인증번호를 발송했습니다.')">이메일 인증</a>
                 </div>
                 <input type="button" id="button" value="전송" style="background-color: #50c8fc;">
               </form>

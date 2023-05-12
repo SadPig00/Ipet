@@ -13,10 +13,13 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.suwon.ezen.service.MemberService;
@@ -100,11 +103,12 @@ public class MemberController {
 	    
 	}
 	
+	@Transactional
 	@PostMapping(value = "register")
 	public String regist(MemberVO vo) {
 		MemberVO mVo = vo;
-//		mVo.setPassword(passEncoder.encode(vo.getPassword()));
-//		service.regist(mVo);
+		mVo.setPassword(passEncoder.encode(vo.getPassword()));
+		service.regist(mVo);
 		System.out.println(vo);
 		return "redirect:/ipet/index";
 	}
@@ -164,6 +168,13 @@ public class MemberController {
 		}
 		
 		return new ResponseEntity<HashMap<String, String>>(map, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/IdModal", method = RequestMethod.GET)
+	public String findId(Model model) {
+	    // 모델 데이터 처리
+	    model.addAttribute("showModal", true); // showModal 속성 값 추가
+	    return "/member/IdModal"; // findId 화면 JSP 파일 호출
 	}
 	
 }
