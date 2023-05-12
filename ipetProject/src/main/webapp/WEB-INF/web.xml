@@ -6,7 +6,10 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>/WEB-INF/spring/root-context.xml
+					 /WEB-INF/spring/spring-security.xml
+					 /WEB-INF/spring/context_mail.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -17,7 +20,7 @@
 	<web-app xmlns = "http://java.sun.com/xml/ns/javaee" version = "3.0">
 
       <session-config>
-             <session-timeout>15</session-timeout>
+             <session-timeout>30</session-timeout>
       </session-config>
       
 	</web-app>

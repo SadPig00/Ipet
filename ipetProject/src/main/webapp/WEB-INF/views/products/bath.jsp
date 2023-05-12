@@ -8,7 +8,7 @@
 -->
 <html>
 	<head>
-		<title>Left Sidebar - Arcana by HTML5 UP</title>
+		<title>i-Pet 반려동물 용품 판매</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../resources/assets/css/main.css" />
@@ -16,7 +16,7 @@
 	<body class="is-preload">
 		<div id="page-wrapper">
 
-			<%@include file ="header.jsp" %>
+			<%@include file ="../header.jsp" %>
 
 			<!-- Main -->
 				<section class="wrapper style1">
@@ -26,7 +26,7 @@
 								<div id="sidebar">
 
 									<!-- Sidebar -->
-
+										<!-- 
 										<section>
 											<h3>Just a Subheading</h3>
 											<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
@@ -36,21 +36,8 @@
 												<a href="#" class="button">Continue Reading</a>
 											</footer>
 										</section>
-
-										<section>
-											<h3>Another Subheading</h3>
-											<ul class="links">
-												<li><a href="#">Amet turpis, feugiat et sit amet</a></li>
-												<li><a href="#">Ornare in hendrerit in lectus</a></li>
-												<li><a href="#">Semper mod quis eget mi dolore</a></li>
-												<li><a href="#">Consequat etiam lorem phasellus</a></li>
-												<li><a href="#">Amet turpis, feugiat et sit amet</a></li>
-												<li><a href="#">Semper mod quisturpis nisi</a></li>
-											</ul>
-											<footer>
-												<a href="#" class="button">More Random Links</a>
-											</footer>
-										</section>
+									  	-->
+										<%@include file ="productsSection.jsp" %>
 
 								</div>
 							</div>
@@ -61,18 +48,13 @@
 
 										<article>
 											<header>
-												<h2>Left Sidebar</h2>
-												<p>Sidebar on the left, content on the right.</p>
+												<h1>상품 리스트</h1>
 											</header>
-
-											<span class="image featured"><img src="../resources/images/banner.jpg" alt="" /></span>
-
-											<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-											Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-											Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi
-											consequat etiam lorem ipsum dolor sit amet nullam.</p>
-
-											<h3>And Yet Another Subheading</h3>
+											<span class="image featured"><img src="../resources/images/pro/bath/DOGSTORY.jpg" alt="" /></span>
+											<p>강아지스토리 강아지샴푸 400ml 고양이 천연 자연유래성분97%</p>
+											<span class="image featured"><img src="../resources/images/pro/harness/PETTHEDOG.jpg" alt="" /></span>
+											<p>펫더독 자석이 착!하네스</p>
+											<!-- <h3>And Yet Another Subheading</h3>
 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus
 											justo. Sed dictum rutrum massa eu volutpat. Quisque vitae hendrerit sem. Pellentesque lorem felis,
 											ultricies a bibendum id, bibendum sit amet nisl. Mauris et lorem quam. Maecenas rutrum imperdiet
@@ -87,7 +69,7 @@
 											Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna,
 											fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
 											Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
-											Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
+											Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p> -->
 										</article>
 
 								</div>
@@ -96,7 +78,7 @@
 					</div>
 				</section>
 
-			<%@include file ="footer.jsp" %>
+			<%@include file ="../footer.jsp" %>
 
 		</div>
 

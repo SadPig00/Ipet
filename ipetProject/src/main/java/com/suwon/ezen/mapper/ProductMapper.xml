@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suwon.ezen.mapper.ProductMapper">
+	
+    <select id="getProduct" parameterType="int" resultType="com.suwon.ezen.vo.ProductVO">
+        select pno, cate, item, price, des, regtime, uptime from ipetProduct where pno = #{pno}
+    </select>
+    
+    <select id="getProducts" resultType="com.suwon.ezen.vo.ProductVO">
+        select pno, cate, item, price, des, regtime, uptime from ipetProduct
+    </select>
+    
+    <insert id="insertProduct" parameterType="com.suwon.ezen.vo.ProductVO">
+        insert into ipetProduct (pno, cate, item, price, des, img) values (null, #{cate}, #{item}, #{price}, #{des}, #{img})
+    </insert>
+    
+    <update id="updateProduct" parameterType="com.suwon.ezen.vo.ProductVO">
+        update ipetProduct set cate=#{cate}, item=#{item}, price=#{price}, des=#{des}, img=#{img}, uptime = current_timestamp where pno=#{pno}
+    </update>
+    
+    <delete id="deleteProduct" parameterType="int">
+        delete from ipetProduct where pno=#{pno}
+    </delete>
+    
+    
+   	<insert id="addAttach">
+		insert into tbl_attach(image, pcode) values(#{image},#{pcode})
+	</insert>
+	<select id="getAttach" resultType="string">
+		select image from tbl_attach where pcode=#{pcode}
+	</select>
+	<delete id="delAttach">
+		delete from tbl_attach where pcode=#{pcode}
+	</delete>
+
+    
+    
+    
+</mapper>

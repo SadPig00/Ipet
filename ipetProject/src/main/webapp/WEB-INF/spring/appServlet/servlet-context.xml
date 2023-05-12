@@ -6,7 +6,36 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-
+    <beans:bean id="AdminInterceptor"
+	 class="com.suwon.ezen.intercepter.AdminIntercepter" />
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/*"/>
+			<mapping path="/products/insert"/>
+			<mapping path="/products/update"/>
+			<beans:ref bean="AdminInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	 <!-- <beans:bean id="ProductInterceptor"
+	 class="com.suwon.ezen.intercepter.ProductIntercepter" />
+	<interceptors>
+		<interceptor>
+			<beans:ref bean="ProductInterceptor"/>
+		</interceptor>
+	</interceptors> -->
+	
+	 <beans:bean id="CommuInterceptor"
+	 class="com.suwon.ezen.intercepter.CommuIntercepter" />
+	<interceptors>
+		<interceptor>
+			<mapping path="/community/insert"/>
+			<mapping path="/community/modify"/>
+			<beans:ref bean="CommuInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+    
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
@@ -22,6 +51,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.suwon.ezen" />
+	
 	
 	
 	

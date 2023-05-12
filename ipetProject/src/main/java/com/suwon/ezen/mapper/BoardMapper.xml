@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.suwon.ezen.mapper.BoardMapper">
+<!-- 전체 목록 가져오기 -->
+ <select id="getListAll" resultType="com.suwon.ezen.vo.BoardVO">
+ 	select * from board order by bno desc limit 15 offset #{offset}
+ </select>
+ 
+ <!-- 새 글 하나 추가하기 -->
+ <insert id="insertPost" parameterType="com.suwon.ezen.vo.BoardVO">
+ 	insert into board(title, content, writer) values(#{title}, #{content}, #{writer})
+ </insert>
+ 
+ <!-- 글 하나 가져오기 -->
+  <select id="getOneContent" resultType="com.suwon.ezen.vo.BoardVO">
+ 	select * from board where bno = #{bno}
+ </select>
+ 
+ <!-- 글 하나 수정하기 -->
+ <update id="modifyOneContent" parameterType="com.suwon.ezen.vo.BoardVO">
+ 	update board set title = #{title}, content = #{content}, writer = #{writer}, updateDate = now() where bno = #{bno}
+ </update>
+ 
+ <!-- 글 하나 삭제하기 -->
+ <delete id="deleteOneContent">
+ 	delete from board where bno = #{bno}
+ </delete>
+ <select id="getCount" resultType="int">
+ 	select count(*) from board
+ </select>
+ 
+ <!-- 이미지 파일 추가하기 -->
+ <insert id="insertImage" parameterType="com.suwon.ezen.vo.ImageTableVO">
+ 	insert into imageTable(fileName, uploadPath) values(#{fileName}, #{uploadPath})
+ </insert>
+ 
+ <!-- 이미지 파일 가져오기 -->
+ <select id="selectImage" resultType="com.suwon.ezen.vo.ImageTableVO">
+ 	select * from imageTable where fileName = #{fileName}
+ </select>
+ 
+</mapper>

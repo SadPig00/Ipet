@@ -13,55 +13,61 @@
 		<!-- Header -->
 		<div id="header">
 			<c:choose>
-				<c:when test="${empty mno}">
+				<c:when test="${empty loginMember.mno}">
 					<span style="text-align: right; display: block">
-						<a style="color: black;">로그인</a> &nbsp; &nbsp;
-						<a style="color: black;">회원가입</a>
+						<a style="color: black;" href="/member/login">로그인</a> &nbsp; &nbsp;
+						<a style="color: black;" href="/member/register">회원가입</a>
 					</span>
 					<br />
 					<span id="timer"></span>
 				</c:when>
-				<c:when test="${not empty mno && auth eq '0'}">
+				<c:when test="${not empty loginMember.mno && loginMember.auth eq 'm'}">
 					<span style="text-align: right; display: block">
 						<a style="color: black;">마이페이지</a> &nbsp; &nbsp;
-						<a style="color: black;">장바구니</a>
+						<a style="color: black;">장바구니</a> &nbsp; &nbsp;
+						<a style="color: black;" href="/member/logout">로그아웃</a>
+						<br />
+						<span style="text-align: right; display: block;">${loginMember.id}님</span>
 					</span>
+
 				</c:when>
-				<c:when test="${mno != null && auth eq '1'}">
+				<c:when test="${not empty loginMember.mno && loginMember.auth eq 'a'}">
 					<span style="text-align: right; display: block">
-						<a style="color: black;">관리자 페이지</a> &nbsp; &nbsp;
-						<a style="color: black;">고객정보 확인</a>
+						<a style="color: black;" href="/admin/member">관리자 페이지</a> &nbsp; &nbsp;
+						<a style="color: black;" href="/member/logout">로그아웃</a>
+						<br />
+						<span style="text-align: right; display: block;">${loginMember.id}님</span>
 					</span>
+
 				</c:when>
+
 			</c:choose>
 			<!-- Logo -->
 			<div id="logo" style="align-items: center;">
-				<h1><a href="/sample/index" id="logo"><img src="../resources/images/ipetLogo_fin.jpg" /></a>
+				<h1><a href="/ipet/index" id="logo"><img src="../resources/images/ipetLogo_fin.jpg" /></a>
 				</h1>
 			</div>
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li class="current"><a href="index">메인 페이지</a></li>
-					<li><a href="/sample/pro">반려동물 용품 판매</a></li>
-					<li><a href="/sample/hos">동물병원 검색</a></li>
-					<li><a href="/sample/commu">커뮤니티</a></li>
+					<li class="current"><a href="/ipet/index">메인 페이지</a></li>
+					<li><a href="/ipet/pro">반려동물 용품 판매</a>
+						<ul>
+							<li><a href="/products/food">사료/간식</a></li>
+							<li><a href="/products/pad">패드/장난감</a></li>
+							<li><a href="/products/bath">목욕/하네스</a></li>
+						</ul>
+					</li>
+					<li><a href="/ipet/hos">동물병원 검색</a></li>
+					<li><a href="/ipet/commu">커뮤니티</a></li>
 					<li>
 						<a href="#">고객관리</a>
 						<ul>
 							<li><a href="#">고객센터</a></li>
 							<li><a href="#">QnA</a></li>
 							<li><a href="#">이벤트</a></li>
-							<!-- <li>
-						<a href="#">Submenu</a>
-						<ul>
-							<li><a href="#">Lorem dolor</a></li>
-							<li><a href="#">Phasellus magna</a></li>
-							<li><a href="#">Magna phasellus</a></li>
-							<li><a href="#">Etiam nisl</a></li>
-							<li><a href="#">Veroeros feugiat</a></li>
-						</ul>
-					</li> -->
+				
+						
 						</ul>
 					</li>
 				</ul>
