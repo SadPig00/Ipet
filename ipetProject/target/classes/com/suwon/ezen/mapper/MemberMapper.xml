@@ -6,7 +6,7 @@
 	</select>
 	
 	<insert id="register" parameterType="com.suwon.ezen.vo.MemberVO">
-		insert into ipetMember values (null,#{name},#{phone},#{address},#{email},#{id},#{password},default,default)
+		insert into ipetMember values (null,#{name},#{phone},#{address1},#{address2},#{email},#{id},#{password},default,default)
 	</insert>
 	
 		<!-- 이메일과 인증번호를 서버에 저장 -->
@@ -33,10 +33,24 @@
     	select * from ipetMember where mno = #{mno}
 	</select>
 	<update id="update" parameterType="com.suwon.ezen.vo.MemberVO">
-		update ipetMember set name=#{name}, phone=#{phone}, address=#{address} where mno=#{mno}
+		update ipetMember set name=#{name}, phone=#{phone}, address1=#{address1},address2=#{address2} where mno=#{mno}
 	</update>
 	<delete id="delete" parameterType="int" >
 		delete from ipetMember where mno=#{mno}
 	</delete>
+	<select id="getId" parameterType="String" resultType="String">
+		select id from ipetMember where name=#{name} and email=#{email}
+	</select>
+	
+	<select id="checkMember" parameterType="String" resultType="com.suwon.ezen.vo.MemberVO">
+		select * from ipetMember where id=#{id} and email=#{email}
+	</select>
+	
+	<update id="updatePwd" parameterType="com.suwon.ezen.vo.MemberVO">
+		update ipetMember set password=#{password} where id=#{id} and email=#{email}
+	</update>
+	<select id="searchAuth" resultType="String">
+		select auth from ipetMember where email = #{email}
+	</select>
 </mapper>
   

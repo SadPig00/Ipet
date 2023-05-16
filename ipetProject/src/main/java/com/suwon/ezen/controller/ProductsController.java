@@ -86,19 +86,19 @@ public class ProductsController {
 	
 	@GetMapping(value = "/food")
 	public ModelAndView petFood(ModelAndView mnv) {
-		mnv.addObject("index", 1);
+		mnv.addObject("index", 2);
 		mnv.setViewName("products/food");
 		return mnv;
 	}
 	@GetMapping(value = "/pad")
 	public ModelAndView petPad(ModelAndView mnv) {
-		mnv.addObject("index", 1);
+		mnv.addObject("index", 2);
 		mnv.setViewName("products/pad");
 		return mnv;
 	}
 	@GetMapping(value = "/bath")
 	public ModelAndView petBath(ModelAndView mnv) {
-		mnv.addObject("index", 1);
+		mnv.addObject("index", 2);
 		mnv.setViewName("products/bath");
 		return mnv;
 	}

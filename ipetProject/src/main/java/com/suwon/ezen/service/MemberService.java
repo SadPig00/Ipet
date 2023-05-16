@@ -31,4 +31,15 @@ public interface MemberService {
 	public int update(MemberVO vo);
 	
 	public int delete(int mno);
+	
+	// 이름과 이메일을 사용해 id 가져오기
+	public String getId(MemberVO vo);
+	
+	// 아이디와 이메일을 사용하여 회원정보 있는지 확인
+	public MemberVO checkMember(MemberVO vo);
+	
+	// 아이디와 이메일을 체크후 비밀번호 변경
+		public void updatePwd(MemberVO vo);
+	
+	public String searchAuth(String email);
 }

@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
       <!DOCTYPE HTML>
       <html>
 
       <head>
         <title>글 목록</title>
-        <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.jpg">
-        <link rel="stylesheet" href="../resources/assets/css/main.css" />
-        <link rel="stylesheet" href="../resources/assets/css/community.css" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="../resources/assets/css/main.css" />
+        <link rel="stylesheet" href="../resources/assets/css/community.css" />
         <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
         <script>
           $(document).ready(function () {
@@ -38,7 +37,11 @@
                       <h2 style="display: inline;">리스트</h2>
                     </header>
 
-                    <button id="insertion" style="float: right;">게시글 추가</button>
+                    <c:choose>
+                      <c:when test="${not empty loginMember.id}">
+                        <button id="insertion" style="float: right;">게시글 추가</button>
+                      </c:when>
+                    </c:choose>
 
                     <div class="board">
                       <table>
@@ -53,7 +56,7 @@
                           <c:forEach var="list" items="${list}">
                             <tr>
                               <td>${list.bno}</td>
-                              <td><a href="/community/modify?bno=${list.bno}">${list.title}</a></td>
+                              <td><a href="/community/read?bno=${list.bno}">${list.title}</a></td>
                               <td>${list.content}</td>
                               <td>${list.writer}</td>
                               <td>

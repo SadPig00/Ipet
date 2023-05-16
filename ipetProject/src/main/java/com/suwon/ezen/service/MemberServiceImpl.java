@@ -87,4 +87,29 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.delete(mno);
 	}
 
+	@Override
+	public String getId(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.getId(vo);
+	}
+
+	@Override
+	public MemberVO checkMember(MemberVO vo) {
+		 
+		return mapper.checkMember(vo);
+	}
+
+	@Override
+	public void updatePwd(MemberVO vo) {
+		System.out.println(vo.getPassword());
+		mapper.updatePwd(vo);
+		
+	}
+
+	@Override
+	public String searchAuth(String email) {
+		 
+		return mapper.searchAuth(email);
+	}
+
 }

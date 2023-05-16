@@ -64,7 +64,7 @@
                           <tr>
                             <td>${list.mno }</td>
                             <td>${list.name}</td>
-                            <td>${list.address}</td>
+                            <td>${list.address1} ${list.address2 }</td>
                             <td>${list.email}</td>
                             <td>${list.id}</td>
                             <td><fmt:formatDate pattern="yyyy년 M월 d일 hh시 m분" value="${list.createDate}"/></td>

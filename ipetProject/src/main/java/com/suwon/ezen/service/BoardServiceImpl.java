@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.suwon.ezen.mapper.BoardMapper;
 import com.suwon.ezen.vo.BoardVO;
 import com.suwon.ezen.vo.ImageTableVO;
+import com.suwon.ezen.vo.ReplyVO;
 
 import lombok.Setter;
 
@@ -70,5 +71,19 @@ public class BoardServiceImpl implements BoardService {
 		
 		return vo;
 	}
+	
+	// 댓글 추가하기
+		@Override
+		public void insertReply(ReplyVO vo) {
+			bmapper.insertReply(vo);
+		}
+		
+		// 모든 댓글 가져오기
+		@Override
+		public List<ReplyVO> getAllReply(int bno) {
+			List<ReplyVO> ReplyList = bmapper.getAllReply(bno);
+			
+			return ReplyList;
+		}
 
 }

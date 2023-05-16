@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -36,6 +37,8 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/community/*")
 @Log4j
 public class CommunityController {
+	int rno = 0;
+	
 	@Setter(onMethod_ = @Autowired)
 	private BoardService service;
 	
@@ -57,9 +60,24 @@ public class CommunityController {
 		return new ResponseEntity<BoardVO>(vo, HttpStatus.OK);
 	}
 
+	// 게시글 읽기 화면으로 이동
+	@GetMapping("/read")
+    public ModelAndView readContent(@RequestParam("bno") int bno) {
+		System.out.println("게시글 읽기: " + bno);
+		ModelAndView model = new ModelAndView();
+		model.setViewName("/board/read");
+		model.addObject("data", service.getOneContent(bno));
+		
+		// 모든 댓글 가져오기
+		List<ReplyVO> replyList = service.getAllReply(bno);
+		model.addObject("replyList", replyList);
+		
+		return model;
+	}
+	
 	// 게시글 수정 화면으로 이동
 	@GetMapping("/modify")
-	public ModelAndView modifyContent(int bno) {
+	public ModelAndView modifyContent(@RequestParam("bno") int bno) {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("/board/modify");
 		model.addObject("data", service.getOneContent(bno));
@@ -70,7 +88,7 @@ public class CommunityController {
 	// 게시글 수정하기
 	@PutMapping(value = "/modfiy" , consumes = "application/json", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<BoardVO> modifyContent(@RequestBody BoardVO vo) {
-		System.out.println(vo);
+		System.out.println("게시글 수정하기: " + vo);
 		service.modifyOneContent(vo);
 		
 		return new ResponseEntity<BoardVO>(vo, HttpStatus.OK);
@@ -79,7 +97,7 @@ public class CommunityController {
 	// 게시글 삭제하기
 	@DeleteMapping("/delete")
 	public ResponseEntity deleteContent(@RequestBody int bno) {
-		System.out.println(bno);
+		System.out.println("게시글 삭제하기: " + bno);
 		service.deleteOneContent(bno);
 		
 		return new ResponseEntity(HttpStatus.OK);
@@ -152,7 +170,7 @@ public class CommunityController {
 		        // DB에 이미지 파일 저장
 		        ImageTableVO vo = new ImageTableVO();
 		        vo.setFileName(uploadFileName);
-		        vo.setUploadPath(uploadPath.toString());
+//		        vo.setUploadPath(uploadPath.toString());
 		        service.insertImage(vo);
 		        
 	        } catch (Exception e) {
@@ -203,11 +221,19 @@ public class CommunityController {
 	}
 	
 	// 댓글 추가
-	@PostMapping("/insertReply")
-	public void insertReply(@RequestParam("bno") int bno, @RequestParam("id") String id, @RequestParam("reply") String reply, @RequestParam("uploadFile") MultipartFile[] uploadFile) {
+	@PostMapping(value = "/insertReply")
+	public ResponseEntity<String> insertReply(@RequestParam("bno") int bno, @RequestParam("id") String id, 
+			@RequestParam("reply") String reply, @RequestParam(value = "uploadFile", required = false) MultipartFile[] uploadFile) {
+		rno += 1;
 		System.out.println("들어오니?");
+		System.out.println("rno: " + rno);
+		// Reply DB에 저장
 		ReplyVO vo = new ReplyVO();
-		
+//	    vo.setBno(bno);
+//	    vo.setId(id);
+//	    vo.setReply(reply);
+//	    vo.setRno(rno);
+//	    
 		// 업로드된 파일 처리
 	    if (uploadFile != null) {
 	    	vo.setIsFileExist("Y");
@@ -226,13 +252,14 @@ public class CommunityController {
 		        try {
 		            multipartFile.transferTo(saveFile);
 		            
-			        // DB에 이미지 파일 저장
+			        // ImageTable DB에 이미지 파일 저장
 			        ImageTableVO imgVo = new ImageTableVO();
 			        imgVo.setFileName(uploadFileName);
-			        imgVo.setUploadPath(uploadPath.toString());
-			        service.insertImage(imgVo);
+//			        imgVo.setBno(bno);
+//			        imgVo.setId(id);
+//			        imgVo.setRno(rno);
 			        
-			        vo.setFileName(uploadFileName);
+			        service.insertImage(imgVo);
 		        } catch (Exception e) {
 		            System.out.println("업로드 실패 => " + uploadFileName + ": " + e.getMessage());
 		        }
@@ -242,9 +269,10 @@ public class CommunityController {
 	    	vo.setIsFileExist("N");
 	    }
 	    
-	    vo.setBno(bno);
-	    vo.setId(id);
-	    vo.setReply(reply);
+	    service.insertReply(vo);
+	    
+	    return new ResponseEntity<String>("전송 완료", HttpStatus.OK);
 	}
 	    
+
 }

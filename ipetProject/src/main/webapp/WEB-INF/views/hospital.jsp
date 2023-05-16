@@ -18,6 +18,18 @@
 		</head>
 		<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 		<script>
+			function popup(url, title, w, h) {
+				var screenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
+				var screenTop = window.screenTop != undefined ? window.screenTop : screen.top;
+
+				width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+				height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+				var left = ((width / 2) - (w / 2)) + screenLeft;
+				var top = ((height / 2) - (h / 2)) + screenTop;
+
+				window.open(url, title, 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+			}
 			$(document).ready(function () {
 				if ("${address}" != "") {
 					$("input[name='address'][value=${ address }]").prop("checked", true);
@@ -47,18 +59,18 @@
 
 					/* str += "<iframe src =" + e.target.href + " width = '600' height = '500' ></iframe>" */
 					/*  $("#mapTd").append(str) */
-					window.open(e.target.href,'_blank','width=500,height=300')
+					popup(e.target.href, '지도', 500, 300)
 				})
-				
+
 				$("#searchBtn").click(function () {
 					if ($("#searchName").prop("selected")) {
 						$("input[name='searchAddress']").val('N')
 						$("input[name='searchName']").val($("input[type=search]").val())
-					} else if($("#searchAddress").prop("selected")) {
+					} else if ($("#searchAddress").prop("selected")) {
 						$("input[name='searchName']").val('N')
 						$("input[name='searchAddress']").val($("input[type=search]").val())
 					}
-					 $("#frm").submit();
+					$("#frm").submit();
 				})
 			})
 		</script>
@@ -117,8 +129,8 @@
 													<li>제주<input type="radio" value="제주" name="address"></li>
 												</ul>
 												<input type="hidden" name="pageNum" />
-												<input type="hidden" name="searchName" value="${searchName}"/>
-												<input type="hidden" name="searchAddress" value="${searchAddress}"/>
+												<input type="hidden" name="searchName" value="${searchName}" />
+												<input type="hidden" name="searchAddress" value="${searchAddress}" />
 											</form>
 										</article>
 
@@ -141,12 +153,13 @@
 								</div>
 							</c:if>
 
-							<table>
-								<tr>
-									<th>동물병원 이름 (이름을 누르면 지도가 나옵니다.)</th>
-									<th>동물병원 주소</th>
-								</tr>
-								<c:if test="${not empty voList}">
+							<c:if test="${not empty voList}">
+								<table>
+									<tr>
+										<th>동물병원 이름 (이름을 누르면 지도가 나옵니다.)</th>
+										<th>동물병원 주소</th>
+									</tr>
+
 									<c:forEach var="vo" items="${voList}">
 										<tr>
 											<td><a class='a_map'
@@ -157,8 +170,8 @@
 											<td id="mapTd"></td>
 										</tr>
 									</c:forEach>
-								</c:if>
-							</table>
+								</table>
+							</c:if>
 							<c:if test="${address != null}">
 								<%@include file="paging.jsp" %>
 							</c:if>

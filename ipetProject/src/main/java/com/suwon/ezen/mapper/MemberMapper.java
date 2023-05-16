@@ -32,4 +32,14 @@ public interface MemberMapper {
 	public int update(MemberVO vo);
 	
 	public int delete(int mno);
+	
+	public String getId(MemberVO vo);
+	
+	// 아이디와 이메일을 사용해 회원이 존재하는지 체크
+	public MemberVO checkMember(MemberVO vo);
+	
+	// 아이디와 이메일을 체크후 비밀번호 변경
+	public void updatePwd(MemberVO vo);
+	
+	public String searchAuth(String email);
 }

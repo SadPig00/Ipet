@@ -34,16 +34,14 @@ public class IpetController {
 	private ProductService pservice;
 	
 	@GetMapping(value = "/index")
-	public ModelAndView index(ModelAndView mnv,HttpSession session) {
-		mnv.addObject("index", 0);
+	public ModelAndView index(ModelAndView mnv) {
+		mnv.addObject("index", 1);
 		mnv.setViewName("index");
-		session.setAttribute("mno", "1");
-		session.setAttribute("auth", "0");
 		return mnv;
 	}
 	@GetMapping(value = "/pro")
 	public ModelAndView pro(ModelAndView mnv) {
-		mnv.addObject("index", 1);
+		mnv.addObject("index", 2);
 		List<ProductVO> productList = pservice.getProducts();
 		mnv.addObject("productList", productList);
 		mnv.setViewName("/products/product");
@@ -51,7 +49,7 @@ public class IpetController {
 	}
 	@GetMapping(value = "/hos")
 	public ModelAndView hos(ModelAndView mnv) {
-		mnv.addObject("index", 2);
+		mnv.addObject("index", 3);
 		mnv.setViewName("hospital");
 		return mnv;
 	}
@@ -61,7 +59,7 @@ public class IpetController {
 		if(pageNum != null) pageNumTemp=pageNum;
 		
 		Paging paging = new Paging(bservice.getCount(), pageNumTemp);
-		mnv.addObject("index", 3);
+		mnv.addObject("index", 4);
 		List<BoardVO> boardList = bservice.getListAll(paging.getOffset());
 		mnv.addObject("list", boardList);
 		mnv.addObject("paging", paging);

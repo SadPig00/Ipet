@@ -25,13 +25,14 @@
 		</interceptor>
 	</interceptors> -->
 	
-	 <beans:bean id="CommuInterceptor"
-	 class="com.suwon.ezen.intercepter.CommuIntercepter" />
+	 <beans:bean id="MemberInterceptor"
+	 class="com.suwon.ezen.intercepter.MemberIntercepter" />
 	<interceptors>
 		<interceptor>
 			<mapping path="/community/insert"/>
 			<mapping path="/community/modify"/>
-			<beans:ref bean="CommuInterceptor"/>
+			<mapping path="/member/mypage"/>
+			<beans:ref bean="MemberInterceptor"/>
 		</interceptor>
 	</interceptors>
 	

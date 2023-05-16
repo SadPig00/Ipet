@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.suwon.ezen.vo.BoardVO;
 import com.suwon.ezen.vo.ImageTableVO;
+import com.suwon.ezen.vo.ReplyVO;
 
 public interface BoardMapper {
 	// 전체 목록 가져오기
@@ -28,4 +29,9 @@ public interface BoardMapper {
 	
 	// 이미지 파일 가져오기
 	public ImageTableVO selectImage(String fileName);
+	// 댓글 추가하기
+	public void insertReply(ReplyVO vo);
+	
+	// 모든 댓글 가져오기
+	public List<ReplyVO> getAllReply(int bno);
 }

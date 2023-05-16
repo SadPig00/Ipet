@@ -14,6 +14,7 @@
 		<div id="header">
 					<span style="text-align: right; display: block">
 						<a style="color: black;" href="/admin/member;">관리자 페이지</a> &nbsp; &nbsp;
+						<a style="color: black;" href="/member/mypage">마이페이지</a> &nbsp; &nbsp;
 						<a style="color: black;" href="/member/logout">로그아웃</a>
 						<br />
 						<span style="text-align: right; display: block;">${loginMember.id}님</span>

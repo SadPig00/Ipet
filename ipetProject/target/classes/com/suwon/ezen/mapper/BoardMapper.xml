@@ -40,5 +40,13 @@
  <select id="selectImage" resultType="com.suwon.ezen.vo.ImageTableVO">
  	select * from imageTable where fileName = #{fileName}
  </select>
+  <!-- 댓글 추가하기 -->
+ <insert id="insertReply" parameterType="com.suwon.ezen.vo.ReplyVO">
+ 	insert into reply(bno, rno, id, reply, isFileExist) values(#{bno}, #{rno}, #{id}, {reply}, #{isFileExist})
+ </insert>
  
+ <!-- 모든 댓글 가져오기 -->
+ <select id="getAllReply" resultType="com.suwon.ezen.vo.ReplyVO">
+ 	select * from reply where bno = #{bno}
+ </select>
 </mapper>

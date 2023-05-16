@@ -33,7 +33,7 @@ def makeMap(address):
     # 가로 세로 크기 (픽셀)
     _w, _h = 500, 300
     # 지도 유형 - basic, traffic, satellite, satellite_base, terrain
-    _maptype = "satellite"
+    _maptype = "terrain"
     # 반환 이미지 형식 - jpg, jpeg, png8, png
     _format = "png"
     # 고해상도 디스펠레이 지원을 위한 옵션 - 1, 2
@@ -66,7 +66,7 @@ def getlist():
     db_class = Database()
     memberList = db_class.executeAll(
         "select mno as '고객번호',name as '이름',"
-        " address as '주소',email as '이메일',"
+        " address1 as '주소', address2 as '상세주소', email as '이메일',"
         " id as '아이디',"
         " createDate as '가입 날짜'"
         " from ipetmember where auth='m'")

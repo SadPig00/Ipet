@@ -9,7 +9,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
       <link rel="stylesheet" href="../resources/assets/css/main.css" />
       <link rel="stylesheet" href="../resources/assets/css/community.css" />
-      <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.jpg">
       <title>새 글 작성</title>
       <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
       <script>
@@ -20,8 +19,7 @@
               data = {
                 bno: $("#bno").val(),
                 title: $("#title").val(),
-                content: $("#textcontent").val(),
-                writer: $("#writer").val(),
+                content: $("#textcontent").val()
               }
 
               $.ajax({
@@ -112,15 +110,6 @@
                   <input type="button" id="delete" value="삭제">
                   <input type="button" id="back" value="이전으로">
                 </form>
-                <div id="replyContent">
-                  <form id="insertReply" enctype="multipart/form-data">
-                    <input type="hidden" name="bno" id="bno" value="${data.bno}" readonly>
-                    <input type="hidden" name="id" id="id" value="${data.writer}" readonly>
-                    <input type="text" id="reply">
-                    <input type="file" id="uploadFile" multiple>
-                    <input type="submit" value="전송" id="submitButton">
-                  </form>
-                </div>
               </div>
             </section>
           </section>

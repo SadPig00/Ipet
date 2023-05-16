@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="../resources/assets/css/main.css" />
     <link rel="stylesheet" href="../resources/assets/css/community.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.jpg">
     <title>새 글 작성</title>
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <script>
@@ -45,9 +44,9 @@
               <form action="#" method="post">
                 제목: <input type="text" name="title" id="title">
                 내용: <textarea name="content" id="textcontent" cols="30" rows="10"></textarea>
-                <!-- <input type="hidden" name="writer" id="writer" value="writer"> -->
+                <input type="hidden" name="writer" id="writer" value="${loginMember.id}">
                 <!-- 나중에 지우기 -->
-                작성자: <input type="text" name="writer" id="writer">
+                <!-- 작성자: <input type="text" name="writer" id="writer"> -->
                 <input type="button" id="button" value="전송">
               </form>
             </div>

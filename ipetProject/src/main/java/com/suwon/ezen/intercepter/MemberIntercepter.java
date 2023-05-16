@@ -11,7 +11,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.suwon.ezen.vo.MemberVO;
 
-public class CommuIntercepter extends HandlerInterceptorAdapter{
+public class MemberIntercepter extends HandlerInterceptorAdapter{
 	
 	 
     @Override
